@@ -39,8 +39,7 @@ namespace DatingApp.API
             services.AddTransient<Seed>();
             services.AddAutoMapper(typeof(DatingRepository).Assembly);
             services.AddScoped<IAuthRepository, AuthRepository>();
-            services.AddScoped<IDatingRepository, DatingRepository>();
-
+            services.AddScoped<IDatingRepository, DatingRepository>(); 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
@@ -52,6 +51,7 @@ namespace DatingApp.API
                     ValidateIssuer = false,
                 };
             });
+            services.AddScoped<LogUserActivity>();
 
         }
 
